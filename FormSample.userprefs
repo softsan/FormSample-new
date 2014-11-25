@@ -1,0 +1,31 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FormSample/CustomCell.cs">
+    <Files>
+      <File FileName="FormSample/App.cs" Line="6" Column="6" />
+      <File FileName="FormSample/CustomerRepository.cs" Line="6" Column="6" />
+      <File FileName="FormSample/CustomCell.cs" Line="5" Column="5" />
+      <File FileName="../../App2/App2/App2.Shared/App.cs" Line="10" Column="10" />
+      <File FileName="FormSample/CheckBox.cs" Line="1" Column="1" />
+      <File FileName="../../Zompio/Dev-Sprint-08/Core/Zompio.Devices.Core/ServiceConsumers/DataService.cs" Line="1" Column="1" />
+      <File FileName="iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="FormSample/PlotView.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="FormSample" expanded="True">
+            <Node name="CustomCell.cs" selected="True" />
+          </Node>
+          <Node name="FormSample.iOS" expanded="True">
+            <Node name="Packages" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
