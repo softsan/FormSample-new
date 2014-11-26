@@ -2,6 +2,8 @@ namespace FormSample
 {
     using System;
 
+    using FormSample.ViewModel;
+
     using Xamarin.Forms;
     using Xamarin.Forms.Labs.Controls;
 
@@ -9,9 +11,8 @@ namespace FormSample
     {
         DataService service = new DataService();
         readonly Agent agent;
-        public RegisterPage(Agent c)
+        public RegisterPage()
         {
-            this.agent = c;
             var layout = this.AssignValues();
             this.Content = layout;
         }
@@ -26,7 +27,7 @@ namespace FormSample
             ////image.WidthRequest = image.HeightRequest = 70;
             ////image.Source = this.agent.ProfilePicture;
 
-
+            BindingContext = new AgentViewModel(Navigation);
 
             var firstNameLabel = new Label { HorizontalOptions = LayoutOptions.Fill };
             firstNameLabel.Text = "First Name";
@@ -35,36 +36,40 @@ namespace FormSample
             lastNameLabel.Text = "Last Name";
 
             var firstName = new Entry { HorizontalOptions = LayoutOptions.FillAndExpand };
-            firstName.Text = this.agent.FirstName;
+            firstName.SetBinding(Entry.TextProperty, AgentViewModel.FirstNamePropertyName);
+            // firstName.Text = this.agent.FirstName;
 
             var lastName = new Entry { HorizontalOptions = LayoutOptions.FillAndExpand };
-            lastName.Text = this.agent.LastName;
+            // lastName.Text = this.agent.LastName;
+            lastName.SetBinding(Entry.TextProperty, AgentViewModel.LastNamePropertyName);
 
             var emailLabel = new Label { HorizontalOptions = LayoutOptions.Fill };
             emailLabel.Text = "Email";
 
             var emailText = new Entry { HorizontalOptions = LayoutOptions.FillAndExpand };
-            emailText.Text = this.agent.Email;
+            // emailText.Text = this.agent.Email;
+            emailText.SetBinding(Entry.TextProperty, AgentViewModel.AgentEmailPropertyName);
 
             var agencyLabel = new Label { HorizontalOptions = LayoutOptions.Fill };
             agencyLabel.Text = "Agency";
 
             var agencyText = new Entry { HorizontalOptions = LayoutOptions.FillAndExpand };
-            agencyText.Text = this.agent.AgencyName;
-
+           // agencyText.Text = this.agent.AgencyName;
+            agencyText.SetBinding(Entry.TextProperty, AgentViewModel.AgencyNamePropertyName);
 
             var phoneLabel = new Label { HorizontalOptions = LayoutOptions.Fill };
             phoneLabel.Text = "Phone number";
 
             var phoneText = new Entry { HorizontalOptions = LayoutOptions.FillAndExpand };
-            phoneText.Text = this.agent.Phone;
+            // phoneText.Text = this.agent.Phone;
+            phoneText.SetBinding(Entry.TextProperty, AgentViewModel.PhonePropertyName);
 
             var chkInvite = new CheckBox();
+            chkInvite.SetBinding(CheckBox.CheckedProperty,AgentViewModel.isCheckedPropertyName);
             chkInvite.UncheckedText = "I Agree to the terms and condition";
             chkInvite.IsVisible = true;
-            chkInvite.BackgroundColor = Color.Blue;
-
-            chkInvite.Checked = true;
+            // chkInvite.BackgroundColor = Color.Blue;
+            // chkInvite.Checked = true;
 
             Button b = new Button
                            {
@@ -72,27 +77,28 @@ namespace FormSample
                                BackgroundColor = Color.Olive,
                                Text = "Submit"
                            };
+            b.SetBinding(Button.CommandProperty, AgentViewModel.SubmitCommandPropertyName);
 
-            b.Clicked += async (object sender, EventArgs e) =>
-                {
-                    Agent c = new Agent()
-                                     {
-                                         Email = emailText.Text,
-                                         FirstName = firstName.Text,
-                                         LastName = lastName.Text,
-                                         AgencyName = agencyText.Text,
-                                         Phone = phoneText.Text
-                                     };
+            //b.Clicked += async (object sender, EventArgs e) =>
+            //    {
+            //        Agent c = new Agent()
+            //                         {
+            //                             Email = emailText.Text,
+            //                             FirstName = firstName.Text,
+            //                             LastName = lastName.Text,
+            //                             AgencyName = agencyText.Text,
+            //                             Phone = phoneText.Text
+            //                         };
 
-                    var result = await this.service.AddAgent(c);
-                    if (result.ResponseCode == "200")
-                    {
-                        await this.DisplayAlert("success", result.ResponseMessage, "OK");
+            //        var result = await this.service.AddAgent(c);
+            //        if (result.ResponseCode == "200")
+            //        {
+            //            await this.DisplayAlert("success", result.ResponseMessage, "OK");
 
-                        await this.Navigation.PopToRootAsync();
-                    }
+            //            await this.Navigation.PopToRootAsync();
+            //        }
 
-                };
+            //    };
 
 
             var nameLayout = new StackLayout()
